@@ -22,16 +22,18 @@ import EditPost from "./EditPost";
 
 import useWinndowSize from "./hooks/useWindowsSize";
 import { DataProvider } from "./context/DataContext";
+import postsData from './Data/db.json';
 
 
 
 
 function App() {
-  const [posts, setPosts] = React.useState([]);
+  //const [posts, setPosts] = React.useState([]);
   const [search, setSearch] = React.useState("");
   const [searchResults, setSearchResults] = React.useState([]);
   const [postTitle, setPostTitle] = React.useState('');
 const [postBody, setPostBody] = React.useState('');
+const [posts, setPosts] = React.useState(postsData.posts);
 
 const [editTitle, seteditTitle] = React.useState('');
 const [editBody, seteditBody] = React.useState('');
@@ -79,9 +81,7 @@ const response = await api.post('/posts', newPost);
 const allPosts = [...posts, response.data];
 
 setPosts (allPosts);
-
 setPostTitle('');
-
 setPostBody('');
 navigate('/');
 }catch(err){
