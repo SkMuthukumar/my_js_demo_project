@@ -1,4 +1,3 @@
-
 import About from "./About";
 import React from "react";
 import './index.css';
@@ -63,28 +62,14 @@ useEffect(() => {
 
 const filteredResults = posts.filter((post) =>
 
-((post.body).toLowerCase()).includes (search.
+((post.body).toLowerCase()).includes (search.toLowerCase())
 
-toLowerCase())
+|| ((post.title).toLowerCase()).includes (search.toLowerCase()));
 
-|| ((post.title).toLowerCase()).includes (search.
-
-toLowerCase()));
-
-setSearchResults (filteredResults.reverse());
-
-}, [posts, search])
-
-
-const handleSubmit = async(e) =>{
-
-e.preventDefault();
-
-const id =posts. length ? posts [posts.length - 1].
-
-id + 1: 1;
-
-const datetime = format(new Date(), 'MMMM dd, yyyy pp');
+setSearchResults (filteredResults.reverse());}, [posts, search])
+const handleSubmit = async(e) =>{e.preventDefault();
+const id = posts.length ? posts[posts.length - 1].id + 1 : 1;
+const datetime=format(new Date(),'MMMM dd, yyyy pp');
 
 const newPost = { id, title: postTitle, datetime,  body: postBody };
 
